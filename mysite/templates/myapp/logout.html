@@ -1,0 +1,5 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<h4 class="fst-italic text-success ">Successfully User Logout</h4>
+<a href= "{% url 'myapp:login'%}"  class="text-primary">Login Again</a><hr>
+{% endblock content %}

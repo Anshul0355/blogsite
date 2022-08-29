@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+<h1 class="text-center alert alert-primary ">Facebook Home Page</h1>
+   <h2>Login Page</h2>
+    <form action="" method="POST">
+        {% csrf_token %}
+        {{ form.as_p }}
+         <button type="submit" class="btn btn-outline-success" onclick="myFunction()">Log In </button>
+         
+        <br><br>
+        <a href="{% url 'myapp:signup' %}"><h5>Create an account</h5></a><br>
+        <a href="{% url 'myapp:about' %}"><h5>Home Page</h5></a>
+    </form>
+{% endblock content %}

@@ -1,0 +1,16 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+    <div class="card">
+
+          <form action=" " method="POST" enctype="multipart/form-data">
+                {% csrf_token %}
+                 <h1 class="fst-italic text-center text-danger">Create Post:</h1><hr style="height:5px; width:100%; border-width:2;background-color:red" >
+
+                {{ form.as_p }}
+               <button type="submit">Add post</button>
+          </form>
+    </div>
+
+{% endblock content %}

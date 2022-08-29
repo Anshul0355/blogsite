@@ -1,0 +1,22 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<p id="total_likes-{{ post.pk }}">{{ post.total_likes }}</p>
+	
+	<form  method="POST">
+	 {% csrf_token %}
+
+        {% if request.user in post.likes.all %}
+            <button type="button" id="dislike-{{ post.pk }}" name="post_id" value="{{ post.pk }}" class="like-dislike btn btn-danger">Dislike</button>
+        {% else %}
+            <button type="button" id="like-{{ post.pk }}" name="post_id" value="{{ post.pk }}" class="like-dislike btn btn-primary">Like</button>
+        {% endif %}
+      
+    </form> 
+  
+{% endblock content %} 
+
+{# {% if request.user in post.likes.all %}
+         <button type="button" id="dislike" name="post_id" value="{{ post.pk }}" class="btn btn-danger">Unlike</button>
+      {% else %}
+         <button type="button" id="like" name="post_id" value="{{ post.pk }}" class="btn btn-primary">Like</button>
+      {% endif %} #}

@@ -1,0 +1,31 @@
+{% extends 'myapp/base.html' %}
+
+{% block content %}
+
+  {% if user.is_authenticated %}
+      <h1 class="text-center alert alert-success text-secondary"> {{user.first_name}} profile page</h1>
+
+      <form action="" method="POST">
+          {% csrf_token %}
+
+    <div class="card-body text-center">
+         <h4 class="text-primary"> <label class="text-secondary" for="id_fieldName">Username:</label> &emsp;&emsp;{{ user.username }}</h4>
+         <h4 class="text-primary"> <label class="text-secondary" for="id_fieldName">FirstName:</label> &emsp;&emsp;{{ user.first_name }}</h4>
+         <h4 class="text-primary"> <label class="text-secondary" for="id_fieldName">LastName:</label> &emsp;&emsp;{{ user.last_name }}</h4>
+         <h4 class="text-primary"> <label class="text-secondary" for="id_fieldName">EmailAdd:</label> &emsp;{{ user.email }}</h4>
+
+      </form>
+
+  {% else %}
+      <h1>not defined all data</h1>
+
+  {% endif %}
+  <br>
+  <br>
+  <a href= "{% url 'myapp:userupdate' user.pk %}"  class="btn btn-outline-warning text-black">update</a>
+  <a href= "{% url 'myapp:logout'%}"  class="btn btn-outline-danger">Logout user</a>
+  <a href="{% url 'myapp:home' %}"><h5>Back to home</h5></a>
+    </div>
+
+
+{% endblock content %}

@@ -1,0 +1,30 @@
+{% extends 'myapp/base.html' %}
+{% load static %}
+{% block content %}
+<div class="text-center">
+    <nav class="navbar navbar-expand-sm bg-black navbar-dark">
+        <div class="container-fluid">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a class="nav-link active text-danger fst-italic fs-3" href="#">Mysite</a>
+                </li>
+                <li class="nav-item fs-4 ">
+                    <a class="nav-link" href="{% url 'myapp:login'%}">Login</a>
+                </li>
+                <li class="nav-item fs-4 ">
+                    <a class="nav-link" href="{% url 'myapp:signup'%}">Signup</a>
+                </li>
+                <li class="nav-item fs-4">
+                    <a class="nav-link disabled" href="{% url 'myapp:about'%}">About Us</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    {% comment %}<h1 class="fst-italic text-center text-primary">~:FACEBOOK:~</h1>
+    <hr style="height:5px; width:100%; border-width:2;background-color:red">{% endcomment %}
+    <br>
+    
+    <h3 class="text-danger">Welcome Facebook !</h3><br><br>
+    <p class="color=blue">Facebook is an American online social media and social networking service owned by Meta Platforms. Founded in 2004 by Mark Zuckerberg with fellow Harvard College students and roommates Eduardo Saverin, Andrew McCollum, Dustin Moskovitz, and Chris Hughes, its name comes from the face book directories often given to American university students. Membership was initially limited to Harvard students, gradually expanding to other North American universities and, since 2006, anyone over 13 years old. As of 2020, Facebook claimed 2.8 billion monthly active users,[2] and ranked fourth in global internet usage.[6] It was the most downloaded mobile app of the 2010s</p>
+</div>
+{% endblock content %}

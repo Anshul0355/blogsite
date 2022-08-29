@@ -1,0 +1,55 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+<div class=" container text-center">
+    <form method="POST" class="text-center">
+        {% csrf_token %}
+        <h5 class=" fst-italic text-danger">Hello,{{ user.username }}</h5>
+        <a href="{% url 'myapp:profile' user.pk %}">
+            <h3 class="fst-italic text-primary">MyProfile</h3>
+        </a>
+        <a href="{% url 'myapp:userpost' %}">
+            <h4 class="fst-italic text-success">MyPost</h4>
+        </a>
+        <br>
+        <a href="{% url 'myapp:upload'%}" class="btn btn-outline-primary">Add New Post</a>
+        {# <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal">Add new Post</button> #}
+        <a href="{% url 'myapp:logout'%}" class="btn btn-outline-danger">Logout user</a>
+        <hr style="height:5px; width:100%; border-width:2;background-color:blue">
+        <h1>-:Visit Tourism Places:-</h1>
+        <hr style="height:5px; width:100%; border-width:2;background-color:blue">
+        {% for exp in object_list %}
+        <h4 class="text-info">{{exp.title}} </h4>
+        <h4 class="text-danger">Description: <h6>
+                {{exp.description}}</h6>
+        </h4>
+        <br>
+        {% if exp.pic %}
+        <a href="{% url 'myapp:detail' exp.pk %}"><img src="{{ exp.pic.url }}" width="500" /></a>
+        {% else %}
+        <br>
+        <b>
+            <p class="text-primary font-weight-bold">Image is not uploaded</p>
+        </b>
+        <br>
+        {% endif %}
+        <br>
+        <br>
+        <br>
+        <h5 class="text-">Author:</h5>
+        <p>{{ exp.author }}</p>
+        <p>{{ exp.date_posted }}</p>
+        {% if request.user in exp.likes.all %}
+        <button type="button" id="dislike-{{ exp.pk }}" name="post_id" value="{{ exp.pk }}" class="like-dislike btn btn-danger">Dislike</button>
+        {% else %}
+        <button type="button" id="like-{{ exp.pk }}" name="post_id" value="{{ exp.pk }}" class="like-dislike btn btn-primary">Like</button>
+        {% endif %}
+        <p id="total_likes-{{ exp.pk }}">{{ exp.total_likes }}</p>
+        <hr style="height:5px; width:100%; border-width:2;background-color:red">
+        {% endfor %}
+    </form>
+</div>
+{% endblock content %}
+{% comment %}<br>
+<a href="{% url 'myapp:postupdate' exp.pk %}" class="btn btn-info">update</a>
+<a href="{% url 'myapp:delete' exp.pk %}" class="btn btn-danger">delete</a>
+<br>{% endcomment %}

@@ -1,0 +1,12 @@
+{% extends 'myapp/base.html' %}
+{% block content %}
+    <form action=""  method="POST">
+        <h1 class="text-center alert alert-primary ">Facebook Register Page</h1>
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit">Register</button>
+        <br>
+        <br>
+        <a href="{% url 'myapp:login' %}">Back to login</a>
+    </form>
+{% endblock content %}
